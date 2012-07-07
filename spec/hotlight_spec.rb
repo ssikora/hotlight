@@ -8,7 +8,7 @@ describe Hotlight do
     zip_98119.should have_at_least(1).items
   end
 
-  it "be on in Sodo" do
+  it "should be on in Sodo" do
     sodo["hotLightOn"].should eql(1)
   end
 
