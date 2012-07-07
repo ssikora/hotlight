@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'hotlight'
+
+puts Hotlight.status('zipcode' => '98119')

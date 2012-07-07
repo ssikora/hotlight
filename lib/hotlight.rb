@@ -5,13 +5,12 @@ require 'ruby-debug'
 require 'json'
 
 module Hotlight
-  VERSION = '0.0.0'
   # Given a location (or list of locations) return a json object of store info, including hotlight status
   # eg status('1115') or status('1115,1112')
   def Hotlight.status(params)
     uri = nil
     uri = URI('http://locations.krispykreme.com/Hotlight/HotLightStatus.ashx') if params.key? 'locations'
-    uri = URI('http://locations.krispykreme.com/Hotlight/HotLightStatus.ashx') if params.key? 'zipcode'
+    uri = URI('http://locations.krispykreme.com/Hotlight/ListLocations.ashx') if params.key? 'zipcode'
     raise "unknown parameter #{params.inspect}" unless uri
     response = Net::HTTP.post_form(uri,params)
 

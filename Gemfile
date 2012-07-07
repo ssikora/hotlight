@@ -1,4 +1,5 @@
+source 'https://rubygems.org'
 
-gem 'ruby-debug19'
-gem 'json'
-gem 'rspec'
+# Specify your gem's dependencies in hotlight.gemspec
+gemspec
+
