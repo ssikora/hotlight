@@ -1,5 +1,44 @@
 #!/usr/bin/env ruby
 
 require 'hotlight'
+require 'optparse'
 
-puts Hotlight.status('zipcode' => '98119')
+options = {}
+
+opt_parser = OptionParser.new do |opt|
+  opt.banner = "Usage: #{$0} OPTIONS"
+  opt.separator  ""
+  opt.separator  "Options"
+
+  opt.on("-z","--zipcode ZIPCODE","search by zipcode") do |zipcode|
+    options['zipcode'] = zipcode
+  end
+
+  opt.on("-l","--locations LOCATIONS","search by location id") do |lid|
+    options['locations'] = lid
+  end
+
+  opt.on("-h","--help","help") do
+    options['help'] = true
+  end
+end
+
+opt_parser.parse!
+
+if options.empty? || options['help']
+    puts opt_parser
+else
+  stores = Hotlight.status(options)
+  if !stores
+    puts "no stores found"
+  else
+    stores[0..2].each do |store|
+      puts
+      puts [store['title'], "at", store['address'], store['city'] + ',', store['state'], store['zipcode']].join(' ')
+      distance = (store['distance'] * 10).round.to_f / 10
+      puts "location = #{store['locationId']}, distance = #{distance} m"
+      puts (store['hotLightOn'] == 1) ? 'Hotlight!' : 'Hotlight dark :('
+    end
+  end
+end
+puts

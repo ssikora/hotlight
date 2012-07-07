@@ -23,7 +23,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Available via command line
+
+    $ hotlight -z 98101
+
+    Sodo at 1900 1st Avenue S Seattle, WA 98134
+    location = 1115, distance = 2.4 m
+    Hotlight dark :(
+
+    North Seattle at 12505 Aurora Avenue N Seattle, WA 98133
+    location = 1114, distance = 8.9 m
+    Hotlight dark :(
+
+    Issaquah at 6210 East Lake Sammamish Parkway Issaquah, WA 98029
+    location = 1111, distance = 15.1 m
+    Hotlight dark :(
+
 
 ## Contributing
 
