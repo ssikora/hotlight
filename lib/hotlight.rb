@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'net/http'
-require 'ruby-debug'
 require 'json'
 
 module Hotlight
